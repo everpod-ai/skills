@@ -41,9 +41,9 @@ The answer is the pod: its `status`, its `pay_url` while it is unpaid, its `url`
 2. **Wait for the build.** When they say they have paid, read the pod. Setup usually takes about 10 minutes, and they get an email when the machine is built.
 3. **Their part, when the status is `awaiting_connection`.** On the pod's page (its `url`), signed in:
    - they join the machine to their Tailscale network by the sign-in link on that page. They open it themselves: whoever signs in adds the machine to their network, so the link is shown only there, and a key never carries it. They need Tailscale running on the device they will connect from;
-   - they switch off the machine's key expiry in Tailscale's admin console (Machines, then **Disable key expiry** in the machine's menu), so that its place on their network does not lapse.
+   - they switch off the machine's key expiry in Tailscale's admin console (Machines, then **Disable key expiry** in the machine's menu). Tailscale otherwise drops a machine from a network after 180 days, and after the hand-over that network is the only way in.
 4. **Log in once.** When `machine.hostname` is no longer null, the machine has joined, and `ssh LOGIN@HOSTNAME` works from a device on that network with no key or password. If this computer is on that network, you can run it for the user, and pass on anything Tailscale asks of them. A consumer VPN can block Tailscale.
-5. **Ready.** Everpod then removes its own setup access and the status is `ready`. On the machine, the user runs `claude` or `codex` and signs in with their own subscription or API key.
+5. **Ready.** When the machine has joined, its key expiry is off and the user has logged in (`machine` shows each), Everpod removes its own setup access and the status is `ready`. Until all three are done it stays `awaiting_connection`. On the machine, the user runs `claude` or `codex` and signs in with their own subscription or API key.
 
 If the status is anything else, tell the user what it means. A pod's status is one of:
 

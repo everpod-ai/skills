@@ -14,7 +14,7 @@ Start a pod only when your owner has asked for one. A pod is a monthly subscript
 
 ## Connect to your owner's Everpod account
 
-1. Ask your owner to make a key: they open https://everpod.ai/account/keys, sign in with their email address and the code Everpod sends them (signing in makes an account if they have none), name the key after you, make it, and send it to you. It starts with `everpod_`, and Everpod shows it only once.
+1. Ask your owner to make a key: they open https://everpod.ai/account/keys, sign in with their email address and the code Everpod sends them (signing in makes an account if they have none), name the key after you, make it, and either send it to you or save it in a file on this computer and tell you where it is. It starts with `everpod_`, and Everpod shows it only once.
 2. Connect yourself to Everpod's MCP server with the key in place of `YOUR_KEY`, then check the connection:
 
    ```bash
@@ -22,7 +22,7 @@ Start a pod only when your owner has asked for one. A pod is a monthly subscript
    openclaw mcp doctor everpod --probe
    ```
 
-   The key belongs in that one place. Never repeat it in a reply or write it anywhere else.
+   From then on the key lives in OpenClaw's settings. Never repeat it in a reply, and never write it anywhere else.
 3. The tools `list_pods`, `get_pod` and `start_pod` are yours from your next turn. Tell your owner you're connected, and carry on when they answer.
 
 A key lets an agent see your owner's pods and start a new one, which they then pay for on everpod.ai. It can't pay, change or cancel a plan, delete anything, open an agent's control panel, or reach a developer pod's machine.
@@ -36,10 +36,10 @@ When your owner wants a new agent, call `start_pod` with the name they want for 
 When your owner wants a cloud computer for their coding agents, call `start_pod` with `kind` set to `developer`, the name they want for the machine (it is also the machine's name on their network, so a short plain word) and `login`, the username they want on it, and give them its `pay_url`. About 10 minutes after they pay, the machine is built and they get an email. Its status is then `awaiting_connection`, and the rest is theirs, on the pod's page (its `url`):
 
 - they join the machine to their own Tailscale network by the sign-in link on that page. They open it themselves: whoever signs in adds the machine to their network, so the link is shown only there, and a key never carries it;
-- they switch off the machine's key expiry in Tailscale's admin console, so that its place on their network does not lapse;
-- they log in once over SSH from a device on that network.
+- they switch off the machine's key expiry in Tailscale's admin console: Tailscale otherwise drops a machine from a network after 180 days, and after the hand-over that network is the only way in;
+- they log in once over SSH from a device on that network, as the `login` and `hostname` in `machine`. If this computer is on that network, you can run the login for them, and pass on anything Tailscale asks of them.
 
-`get_pod` shows which of these are done, in `machine`. Everpod then removes its own setup access and the status is `ready`. On the machine, they run `claude` or `codex` and sign in with their own subscription or API key: no model usage is included with a developer pod, and any other agent installs beside those two.
+`get_pod` shows which of these are done, in `machine`. When all three are, Everpod removes its own setup access and the status is `ready`. On the machine, they run `claude` or `codex` and sign in with their own subscription or API key: no model usage is included with a developer pod, and any other agent installs beside those two.
 
 ## Move yourself onto a pod
 
