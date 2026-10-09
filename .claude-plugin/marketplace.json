@@ -11,7 +11,7 @@
     {
       "name": "everpod-developer-pod",
       "source": "./",
-      "description": "Gets the user a developer pod on Everpod, an always-on, persistent cloud computer of their own with Claude Code, Codex or both installed, reached only over their own Tailscale network. Use when the user wants a cloud machine or remote server where their coding agents keep working with the laptop closed, wants to run Claude Code or Codex in the cloud, or mentions Everpod or a developer pod.",
+      "description": "Gets the user a developer pod on Everpod, an always-on, persistent cloud computer of their own with their pick of Claude Code, Codex, OpenCode and Pi installed, reached only over their own Tailscale network. Use when the user wants a cloud machine or remote server where their coding agents keep working with the laptop closed, wants to run Claude Code, Codex, OpenCode or Pi in the cloud, or mentions Everpod or a developer pod.",
       "homepage": "https://everpod.ai/docs/api#developer-pod",
       "repository": "https://github.com/everpod-ai/skills",
       "license": "MIT",
